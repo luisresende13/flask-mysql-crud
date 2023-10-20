@@ -23,6 +23,10 @@ Flask MySQL CRUD API provides a simple RESTful interface for basic database oper
     }
     ```
 
+- **Delete Table:**
+  - **Endpoint:** `DELETE /sql/<string:table_name>`
+
+
 - **Insert Record:**
   - **Endpoint:** `POST /sql/<table_name>`
   - **Payload:**
@@ -36,10 +40,13 @@ Flask MySQL CRUD API provides a simple RESTful interface for basic database oper
 - **Get All Records:**
   - **Endpoint:** `GET /sql/<table_name>`
 
+- **Get Record:**
+  - **Endpoint:** `GET /sql/<table_name>/<record_id>`
+
 - **Update Record:**
   - **Endpoint:** `PUT /sql/<table_name>/<record_id>`
   - **Payload:**
-    ```json
+    ```jsons
     {
       "column1": "new_value1",
       "column2": "new_value2"
@@ -48,6 +55,14 @@ Flask MySQL CRUD API provides a simple RESTful interface for basic database oper
 
 - **Delete Record:**
   - **Endpoint:** `DELETE /sql/<table_name>/<record_id>`
+
+## Testing and Examples
+
+Refer to the notebook `MySQL Flask API Testing.ipynb` for detailed examples of requests to the API, demonstrating various operations and use cases.
+
+## Deployment Instructions
+
+To deploy the API on Ubuntu 22.04, use the provided script `ubuntu-flask-app-deploy.sh`. Ensure you have the necessary configurations in place before running the script.
 
 ## Technologies Used
 
