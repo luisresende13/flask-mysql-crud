@@ -1,92 +1,67 @@
-Flask CRUD API for MySQL Database
-This Flask application provides a simple CRUD (Create, Read, Update, Delete) API for interacting with a MySQL database. It allows you to create tables, manage records, and perform basic operations on specified tables.
+# Flask MySQL CRUD API
 
-Prerequisites
-Python 3.x
-Flask
-Flask-CORS
-MySQL Database Server
-MySQL Connector/Python
-Setup
-Clone this repository to your local machine:
+Flask MySQL CRUD API provides a simple RESTful interface for basic database operations on MySQL tables. It supports creating, updating, deleting tables, inserting, retrieving, updating, and deleting records.
 
-git clone https://github.com/username/flask-mysql-crud-api.git
+## Features
 
-Install the required Python packages:
+- **Create Table:**
+  - **Endpoint:** `POST /sql`
+  - **Payload:**
+    ```json
+    {
+      "name": "table_name",
+      "columns": ["column1 datatype", "column2 datatype"]
+    }
+    ```
 
-pip install Flask Flask-CORS mysql-connector-python
+- **Add Columns to Table:**
+  - **Endpoint:** `PUT /sql/<table_name>`
+  - **Payload:**
+    ```json
+    {
+      "columns": ["new_column1 datatype", "new_column2 datatype"]
+    }
+    ```
 
-Configure the MySQL database connection details in the app.py file:
+- **Insert Record:**
+  - **Endpoint:** `POST /sql/<table_name>`
+  - **Payload:**
+    ```json
+    {
+      "column1": "value1",
+      "column2": "value2"
+    }
+    ```
 
-python
-Copy code
-default_db_config = {
-    "host": "localhost",
-    "user": "flask_user",
-    "password": "your_password",
-    "database": "flask_app_db"
-}
-Create a virtual environment (optional but recommended):
+- **Get All Records:**
+  - **Endpoint:** `GET /sql/<table_name>`
 
-python -m venv venv
-source venv/bin/activate
+- **Update Record:**
+  - **Endpoint:** `PUT /sql/<table_name>/<record_id>`
+  - **Payload:**
+    ```json
+    {
+      "column1": "new_value1",
+      "column2": "new_value2"
+    }
+    ```
 
-Run the Flask application:
+- **Delete Record:**
+  - **Endpoint:** `DELETE /sql/<table_name>/<record_id>`
 
-python app.py
+## Technologies Used
 
-The API will be accessible at http://localhost:5000.
+- Flask
+- MySQL
+- Flask-CORS
 
-API Endpoints
-Create Table
-Create a new table in the database.
+## How to Run
 
-URL: POST /sql
+1. Clone the repository.
+2. Install required packages: `pip install -r requirements.txt`.
+3. Set up MySQL database configuration in `app.py`.
+4. Run the Flask app: `python app.py`.
 
-Request Body:
+## License
 
-{"name": "table_name", "columns": ["column1_name column1_data_type", "column2_name column2_data_type"]}
-
-Delete Table
-Delete the specified table from the database.
-
-URL: DELETE /sql/<string:table_name>
-Update Table
-Add new columns to the specified table.
-
-URL: PUT /sql/<string:table_name>
-
-Request Body:
-
-{"columns": ["new_column_name new_column_data_type", "another_column_name another_column_data_type"]}
-
-Create Record
-Insert a new record into the specified table.
-
-URL: POST /sql/<string:table_name>
-
-Request Body:
-
-{"column1_name": "value1", "column2_name": "value2", ...}
-
-Get Records
-Retrieve all records from the specified table.
-
-URL: GET /sql/<string:table_name>
-Get Single Record
-Retrieve a single record by ID from the specified table.
-
-URL: GET /sql/<string:table_name>/<int:record_id>
-Update Record
-Update the specified record by ID in the specified table.
-
-URL: PUT /sql/<string:table_name>/<int:record_id>
-
-Request Body:
-
-{"column1_name": "new_value1", "column2_name": "new_value2", ...}
-
-Delete Record
-Delete the specified record by ID from the specified table.
-
-URL: DELETE /sql/<string:table_name>/<int:record_id>
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
