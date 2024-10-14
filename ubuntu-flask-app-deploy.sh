@@ -21,7 +21,7 @@ mysql -u root -p
 # EXIT;
 
 # 3. Configure Firewall and Network Settings:
-# Make sure that your Flask application is accessible from the network. You may need to configure firewall rules in Google Compute Engine to allow incoming traffic on the port your Flask application is running on (usually port 5000 for development).
+# Make sure that your Flask application is accessible from the network. You may need to configure firewall rules in Google Compute Engine to allow incoming traffic on the port your Flask application is running on (usually port TCP 5000 for development).
 
 # 3.1 Adjust app permision
 sudo chown -R root:root /usr/local/zm-flask-app
